@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>आशीर्वाद वचन</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('blue-parchment.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    #logo {
+      width: 120px;
+      height: 120px;
+      background: url('logo.png') no-repeat center center;
+      background-size: contain;
+      margin-bottom: 20px;
+    }
+    #input-section {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+      width: 250px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #0055aa;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003377;
+    }
+    #main-content {
+      display: none;
+    }
+    #verse-box {
+      background: rgba(0, 0, 50, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      max-width: 90%;
+      margin: 20px auto;
+      box-shadow: 0 0 10px #000;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="logo"></div>
+
+  <div id="input-section">
+    <input type="text" id="username" placeholder="अपना नाम दर्ज करें">
+    <br>
+    <button onclick="startBlessing()">Submit</button>
+  </div>
+
+  <div id="main-content">
+    <h1>आशीर्वाद और मार्गदर्शन</h1>
+    <div id="verse-box"></div>
+    <button onclick="showVerse()">नया वचन दिखाएं</button>
+  </div>
+
+  <script>
+    const verses = [
+      {
+        hindi: "परमेश्वर हमारा शरणस्थान और बल है, संकट में अति सहज सहायता। — स्तोत्रसंहिता 46:1",
+        english: "God is our refuge and strength, a very present help in trouble. — Psalm 46:1"
+      },
+      {
+        hindi: "यहोवा तुझे आशीर्वाद दे और तेरी रक्षा करे। — गिनती 6:24",
+        english: "The Lord bless you and keep you. — Numbers 6:24"
+      },
+      {
+        hindi: "मैं तुझे बुद्धि दूंगा और जिस मार्ग में तुझे चलना होगा उस में तेरी अगुवाई करूंगा। — भजन संहिता 32:8",
+        english: "I will instruct you and teach you in the way you should go. — Psalm 32:8"
+      },
+      {
+        hindi: "तू जब जल में होकर जाएगा, मैं तेरे संग रहूंगा। — यशायाह 43:2",
+        english: "When you pass through the waters, I will be with you. — Isaiah 43:2"
+      },
+      {
+        hindi: "यहोवा मेरी ज्योति और मेरा उद्धार है, मैं किस से डरूं? — भजन संहिता 27:1",
+        english: "The Lord is my light and my salvation; whom shall I fear? — Psalm 27:1"
+      },
+      {
+        hindi: "जो मुझ से ज्ञान मांगे, मैं उसे उत्तर दूंगा। — याकूब 1:5",
+        english: "If any of you lacks wisdom, let him ask of God. — James 1:5"
+      },
+      {
+        hindi: "तू अपनी सारी चिंता उसी पर डाल दे, क्योंकि वह तेरा ध्यान रखता है। — 1 पतरस 5:7",
+        english: "Cast all your anxiety on Him because He cares for you. — 1 Peter 5:7"
+      },
+      {
+        hindi: "मैं तुझे कभी नहीं छोड़ूंगा और न कभी त्यागूंगा। — इब्रानियों 13:5",
+        english: "I will never leave you nor forsake you. — Hebrews 13:5"
+      },
+      {
+        hindi: "जो यहोवा की बाट जोहते हैं, वे नया बल प्राप्त करते हैं। — यशायाह 40:31",
+        english: "Those who wait on the Lord shall renew their strength. — Isaiah 40:31"
+      },
+      {
+        hindi: "यहोवा तेरे आगे आगे चलेगा, और वह तुझे मार्ग दिखाएगा। — व्यवस्थाविवरण 31:8",
+        english: "The Lord Himself goes before you and will guide you. — Deuteronomy 31:8"
+      }
+    ];
+
+    function startBlessing() {
+      const name = document.getElementById('username').value.trim();
+      if (name !== "") {
+        document.getElementById('input-section').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        showVerse();
+      } else {
+        alert("कृपया अपना नाम दर्ज करें।");
+      }
+    }
+
+    function showVerse() {
+      const random = Math.floor(Math.random() * verses.length);
+      const verse = verses[random];
+      document.getElementById('verse-box').innerHTML = `
+        <p>${verse.hindi}</p>
+        <p><em>${verse.english}</em></p>
+      `;
+    }
+  </script>
+</body>
+</html>
