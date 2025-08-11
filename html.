@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>आशीर्वाद वचन</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&family=Gentium+Book+Basic&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('blue-parchment.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Gentium Book Basic', serif;
+      color: #2c3e50;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    #logo {
+      width: 100px;
+      height: 100px;
+      background: url('logo.png') no-repeat center center;
+      background-size: contain;
+      margin: 20px auto;
+    }
+    .input-section {
+      margin: 20px auto;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #verse-box {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    .verse-hindi {
+      font-size: 22px;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      margin-bottom: 10px;
+    }
+    .verse-english {
+      font-size: 18px;
+      font-style: italic;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="logo"></div>
+
+  <div class="input-section">
+    <label for="username">🙏 कृपया अपना नाम दर्ज करें:</label><br>
+    <input type="text" id="username" placeholder="आपका नाम...">
+    <br>
+    <button onclick="showVerse()">आशीर्वाद प्राप्त करें</button>
+  </div>
+
+  <div id="verse-box">
+    <p class="verse-hindi" id="hindiVerse"></p>
+    <p class="verse-english" id="englishVerse"></p>
+  </div>
+
+  <script>
+    const verses = [
+      {
+        hindi: "🌸 प्रभु मेरा चरवाहा है; मुझे कोई कमी नहीं होगी। — भजन संहिता 23:1",
+        english: "🌸 The Lord is my shepherd; I shall not want. — Psalm 23:1"
+      },
+      {
+        hindi: "🌸 मैं तुझे बुद्धि दूंगा और उस मार्ग में चलाऊंगा जिस पर तुझे जाना है। — भजन संहिता 32:8",
+        english: "🌸 I will instruct you and teach you in the way you should go. — Psalm 32:8"
+      },
+      {
+        hindi: "🌸 जो प्रभु की बाट जोहते हैं, वे नई शक्ति प्राप्त करेंगे। — यशायाह 40:31",
+        english: "🌸 Those who wait on the Lord shall renew their strength. — Isaiah 40:31"
+      }
+    ];
+
+    function showVerse() {
+      const name = document.getElementById("username").value.trim();
+      if (name === "") {
+        alert("कृपया अपना नाम दर्ज करें।");
+        return;
+      }
+      const verse = verses[Math.floor(Math.random() * verses.length)];
+      document.getElementById("hindiVerse").textContent = verse.hindi;
+      document.getElementById("englishVerse").textContent = verse.english;
+      document.getElementById("verse-box").style.display = "block";
+    }
+  </script>
+</body>
+</html>
