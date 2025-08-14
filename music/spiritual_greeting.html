@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to new appostlic Church</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('images/sacred_background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 3s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .controls {
+      margin-top: 30px;
+    }
+
+    button, input[type="range"] {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      background-color: #d4af37;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .blessing {
+      margin-top: 40px;
+      font-size: 1.5em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎵 Church Welcome Music -->
+  <audio id="welcomeMusic" autoplay loop>
+    <source src="audio/luminoso_church_intro.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 🙏 Personalized Blessing -->
+  <div class="fade-in blessing" id="blessingBlock">
+    <!-- Will be filled by JS -->
+  </div>
+
+  <!-- 🔊 Music Controls -->
+  <div class="controls">
+    <button onclick="toggleMusic()">🔊 Toggle Music</button>
+    <input type="range" min="0" max="1" step="0.1" value="0.5" onchange="setVolume(this.value)">
+  </div>
+
+  <!-- 🔤 Name Input -->
+  <div class="controls">
+    <input type="text" id="userName" placeholder="Enter your name" />
+    <button onclick="showBlessing()">🙏 Show Blessing</button>
+  </div>
+
+  <!-- 🔧 JavaScript -->
+  <script>
+    function toggleMusic() {
+      const music = document.getElementById('welcomeMusic');
+      music.paused ? music.play() : music.pause();
+    }
+
+    function setVolume(val) {
+      document.getElementById('welcomeMusic').volume = val;
+    }
+
+    function showBlessing() {
+      const name = document.getElementById('userName').value || 'प्रिय आत्मा';
+      const blessingBlock = document.getElementById('blessingBlock');
+      blessingBlock.innerHTML = `
+        <div>
+          <p>🌸 Welcome, <strong>${name}</strong>!</p>
+          <p>📖 “The Lord bless you and keep you.” – Numbers 6:24</p>
+          <p>📜 “यहोवा तुझे आशीष दे और तेरी रक्षा करे।” – गिनती 6:24</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
